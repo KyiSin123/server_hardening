@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 # Get the last SSH login IP from auth.log
 def get_last_login_ip():
     try:
-        log_output = os.popen("tail -n 20 /var/log/auth.log | grep 'Accepted' | tail -n 1").read()
+        log_output = os.popen('sudo cat /var/log/auth.log | grep "Accepted" | tail -n 1').read()
         ip = log_output.split(" ")[10]  # Extract IP from log line
         return ip
     except IndexError:
